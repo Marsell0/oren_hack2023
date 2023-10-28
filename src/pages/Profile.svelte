@@ -224,6 +224,7 @@ function changeChecked(id){
   .profile{
     display: flex;
     flex-direction: row;
+    font-family: 'SF';
   }
   .profile__sidebar{
     border: 1px solid #F0F0FF;
@@ -265,7 +266,7 @@ function changeChecked(id){
     color:#271FE0;
     text-decoration: none;
     font-feature-settings: 'clig' off, 'liga' off;
-    font-family: 'SF Pro Text';
+
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -273,6 +274,9 @@ function changeChecked(id){
   }
   .profile__content{
     background-color: #F6F6F9;
+    height: 100%;
+    width: 100%;
+    
   }
 
 </style>

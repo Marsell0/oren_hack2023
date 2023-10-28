@@ -1,3 +1,13 @@
+@font-face {
+  font-weight: 400;
+  font-family: "SF";
+  src: url("src/assets/fonts/SF-Pro-Display-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-weight: 700;
+  font-family: "SF";
+  src: url("src/assets/fonts/SF-Pro-Display-Bold.woff2") format("woff2");
+}
 html,
 body,
 div,

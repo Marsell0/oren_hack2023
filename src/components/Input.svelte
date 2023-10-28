@@ -1,0 +1,18 @@
+<script>
+ export let name = 'Неизвестно'
+</script>
+
+<input class="input" type="text" value="{name}">
+
+<style>
+  .input{
+    display: flex;
+    padding: 10px 12px 10px 16px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 4px;
+    border: 1px solid var(--light-mode-neutral-200, #DCDCE4);
+    background: var(--light-mode-neutral-0, #FFF);
+  }
+</style>
