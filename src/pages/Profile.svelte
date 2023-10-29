@@ -23,8 +23,19 @@ var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(
     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
 }).join(''));
 
+let url = 'http://xn--e1agmfegjgclf.xn----7sbpbfclakh1al9a7fxc.xn--p1ai:8000'
 let token = JSON.parse(jsonPayload) 
 localStorage.id = token['UserId']
+let res = axios.get(url+"/portals/get_portal_by_owner_id", {
+  headers:{
+    'Authorization': localStorage.getItem('token').split(' ')[1]
+  },
+  params: {
+    'owner_id': localStorage.getItem('id')
+  }
+})
+console.log('get_portla');
+console.log(res);
 const userMenu = [
   {
     img: 'src/assets/sidebar/education.png',
@@ -215,7 +226,7 @@ function changeChecked(id){
       {:else if view === 'education'}
         <EducationView {view}></EducationView>
       {:else if view === 'tests'}
-        <TestsView></TestsView>
+        <TestsView {view}></TestsView>
       {:else if view === 'results'}
         <ResultView></ResultView>
       {:else if view === 'support'}
@@ -225,7 +236,7 @@ function changeChecked(id){
       {:else if view === 'education_base'}
         <EducationBaseView {view}></EducationBaseView>
       {:else if view === 'tests_base'}
-        <BaseTests></BaseTests>
+        <BaseTests {view}></BaseTests>
       {:else if view === 'employee'}
         <EmployeeView></EmployeeView>
       {:else if view === 'anal'}

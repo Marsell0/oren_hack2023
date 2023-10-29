@@ -1,5 +1,6 @@
 <script>
   import axios from "axios";
+  import Input from "./Input.svelte";
   let name, portal_id, url_file
   let url = 'http://xn--e1agmfegjgclf.xn----7sbpbfclakh1al9a7fxc.xn--p1ai:8000'
 
@@ -9,8 +10,8 @@
     console.log(localStorage.getItem('id'));  
     tok = token[1]
     params =       {
-        'name': name,
         'portal_id': localStorage.getItem('id'),
+        'name': name,
         'url_file': null
       }
     console.log(tok);
@@ -47,17 +48,26 @@
 </div>
 
 <style>
-  /* .modal{
-    width: 500px;
-    height: 200px;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-  } */
+  .modal{
+
+  }
+  .modal__wrapper{
+
+  }
+  .modal__form{
+
+  }
+  .form__block{
+
+  }
+  .block__text{
+    color: var(--light-mode-neutral-800, #32324D);
+font-feature-settings: 'clig' off, 'liga' off;
+
+/* Pi (Bold) - Small button text */
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: 16px; /* 133.333% */
+  }
 </style>

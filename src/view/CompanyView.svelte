@@ -6,7 +6,7 @@ import { onMount } from "svelte";
 let url = 'http://xn--e1agmfegjgclf.xn----7sbpbfclakh1al9a7fxc.xn--p1ai:8000'
 
 let res, token
-let name = "инфа", address, inn, phone, email, fio
+let name = "инфа", address, inn, phone_number, email, fio = "Неизвестный", mission, purpose
 async function getProfile(){
   token = localStorage.getItem('token').split(' ')
   console.log(token[1]);
@@ -17,9 +17,20 @@ async function getProfile(){
     params: {
       'owner_id': localStorage.id
     }
+  }).then(() => {
+    console.log(res);
+    email = res['data']['email']
+    phone_number = res['data']['phone_number']
+    address = res['data']['address']
+    name = res['data']['name']
+    fio = res['data']['fio']
+    purpose = res['data']['purpose']
+    mission = res['data']['mission']
+    console.log(name);
   })
   console.log(res);
-  email = res['data']['email']
+  console.log(res[1]);
+  
 }
 
 onMount(() => {
@@ -59,27 +70,47 @@ onMount(() => {
             <div class="input__row">
               <div class="row__block">
                 <p class="block__text">Название компании</p>
-                <Input {name}/>
+                {#if localStorage.role === 'Organization'}
+                  <input class="input" type="text" value="{name}">
+                {:else}
+                  <input disabled class="input" type="text" value="{name}">
+                {/if}
               </div>
             </div>
             <div class="input__row">
               <div class="row__block">
                 <p class="block__text">Цель</p>
-                <Input {name}  />
+                {#if localStorage.role === 'Organization'}
+                  <input class="input" type="text" value="{purpose}">
+                {:else}
+                  <input disabled class="input" type="text" value="{purpose}">
+                {/if}
               </div>
               <div class="row__block">
                 <p class="block__text">Миссия</p>
-                <Input {name} />
+                {#if localStorage.role === 'Organization'}
+                  <input class="input" type="text" value="{mission}">
+                {:else}
+                  <input disabled class="input" type="text" value="{mission}">
+                {/if}
               </div>
             </div>
             <div class="input__row">
               <div class="row__block">
                 <p class="block__text">Фактический адрес</p>
-                <Input {name} />
+                {#if localStorage.role === 'Organization'}
+                  <input class="input" type="text" value="{address}">
+                {:else}
+                  <input disabled class="input" type="text" value="{address}">
+                {/if}
               </div>
               <div class="row__block">
                 <p class="block__text">ИНН</p>
-                <Input {name} />
+                {#if localStorage.role === 'Organization'}
+                  <input class="input" type="text" value="{inn}">
+                {:else}
+                  <input disabled class="input" type="text" value="{inn}">
+                {/if}
               </div>
             </div>
           </div>
@@ -90,11 +121,19 @@ onMount(() => {
             <div class="input__row">
               <div class="row__block">
                 <p class="block__text">Телефон</p>
-                <Input {name} />
+                {#if localStorage.role === 'Organization'}
+                  <input class="input" type="text" value="{phone_number}">
+                {:else}
+                  <input disabled class="input" type="text" value="{phone_number}">
+                {/if}
               </div>
               <div class="row__block">
                 <p class="block__text">E-mail</p>
-                <Input {name} />
+                {#if localStorage.role === 'Organization'}
+                  <input class="input" type="text" value="{name}">
+                {:else}
+                  <input disabled class="input" type="text" value="{name}">
+                {/if}
               </div>
               <div class="row__block">
                 <p class="block__text">Представитель</p>

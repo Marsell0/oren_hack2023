@@ -18,6 +18,7 @@
         'Authorization': localStorage.getItem('token').split(' ')[1]
       }
     })
+    console.log(localStorage.getItem('token').split(' ')[1]);
     console.log(res)
   }
 
@@ -48,6 +49,7 @@
       </div>
     </div> -->
     <AddMaterialsModal></AddMaterialsModal>
+    <!-- <button on:click={getModules}>обновить</button> -->
   </div>
   
   <style>
