@@ -12,9 +12,19 @@ import BaseTests from "../view/BaseTests.svelte";
 import EmployeeView from "../view/EmployeeView.svelte";
 import AnalView from "../view/AnalView.svelte";
 import EducationBaseView from "../view/EducationBaseView.svelte";
-
+  import { onMount } from "svelte";
+  import axios from "axios";
 let view = 'company'
+let id = localStorage.getItem('token')
+console.log(id);
+var base64Url = id.split('.')[1];
+var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+}).join(''));
 
+let token = JSON.parse(jsonPayload) 
+localStorage.id = token['UserId']
 const userMenu = [
   {
     img: 'src/assets/sidebar/education.png',
@@ -138,6 +148,7 @@ const adminMenu =  [
     id: 'https://google.com',
   }
 ]
+
 
 function changeChecked(id){
   let elem = document.getElementById(id)

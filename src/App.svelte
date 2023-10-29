@@ -2,6 +2,7 @@
 import BlueButton from './components/BlueButton.svelte'
 import WhiteButton from './components/WhiteButton.svelte'
 import Profile from './pages/Profile.svelte';
+import RegisterPortal from './components/RegisterPortal.svelte';
 
 import axios from 'axios'
 let res
@@ -12,7 +13,7 @@ let type = 'submit'
 
 let params
 // let url = 'https://0435-176-28-64-201.ngrok-free.app/api'
-let url = 'https://82e7-145-255-21-225.ngrok-free.app'
+let url = 'http://xn--e1agmfegjgclf.xn----7sbpbfclakh1al9a7fxc.xn--p1ai:8000'
 
 async function postReg(){
   let email = login
@@ -43,7 +44,8 @@ async function postAuth(){
   res = await axios.post(url+"/users/sign_in", params,
   {
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     }
   }).catch(() => {
     isError = true
@@ -110,8 +112,8 @@ function logout(){
           {/if}
         </form>
       </div>
-      
     </div>
+    <RegisterPortal></RegisterPortal>
   {/if}
 
 </div>

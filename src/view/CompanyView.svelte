@@ -1,7 +1,30 @@
 <script>
 import Input from "../components/Input.svelte";
+import axios from "axios";
+import { onMount } from "svelte";
 
-let name = 'Инфа'
+let url = 'http://xn--e1agmfegjgclf.xn----7sbpbfclakh1al9a7fxc.xn--p1ai:8000'
+
+let res, token
+let name = "инфа", address, inn, phone, email, fio
+async function getProfile(){
+  token = localStorage.getItem('token').split(' ')
+  console.log(token[1]);
+  res = await axios.get(url+"/users/profile", {
+    headers:{
+      'Authorization': token[1]
+    },
+    params: {
+      'owner_id': localStorage.id
+    }
+  })
+  console.log(res);
+  email = res['data']['email']
+}
+
+onMount(() => {
+  getProfile()
+})
 </script>
 
 <div class="company">
