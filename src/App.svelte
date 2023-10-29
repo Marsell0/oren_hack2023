@@ -11,7 +11,8 @@ let password = ''
 let type = 'submit'
 
 let params
-let url = 'https://0435-176-28-64-201.ngrok-free.app/api'
+// let url = 'https://0435-176-28-64-201.ngrok-free.app/api'
+let url = 'https://82e7-145-255-21-225.ngrok-free.app'
 
 async function postReg(){
   let email = login
@@ -35,19 +36,19 @@ async function postAuth(){
   let email = login
   let pass = password
   params = {
-      'email': email,
-      'password': pass
+      "email": email,
+      "password": pass
     } 
   console.log(params);
-  res = await axios.post(url+"/signin", params,
+  res = await axios.post(url+"/users/sign_in", params,
   {
     headers: {
-      'ngrok-skip-browser-warning': '69420',
       'Content-Type': 'application/json'
     }
   }).catch(() => {
     isError = true
   })
+  console.log(res);
   res = res['data']
   token = res['tokenPair']
   localStorage.role = res['role']
@@ -75,23 +76,13 @@ function logout(){
         <li class="menu__item">ОТЗЫВЫ</li>
       </ul>
       <div class="header__buttons">
-        <!-- <div class="buttons__btn">
-          <BlueButton {type}>
-            Вход
-          </BlueButton>
-        </div>
-        <div class="buttons__btn">
-          <WhiteButton {type}>
-            Новый портал
-          </WhiteButton>
-        </div> -->
         {#if localStorage.role}
           <p>{localStorage.role}</p>
-          <button on:click={logout}>Выход</button>
+          <button class="buttons__exit" on:click={logout}>Выход</button>
         {:else}
-          <BlueButton {type}>
+          <!-- <BlueButton {type}>
             Вход
-          </BlueButton>
+          </BlueButton> -->
           <WhiteButton {type}>
             Новый портал
           </WhiteButton>
@@ -110,7 +101,10 @@ function logout(){
           <input class="form__input" type="text" bind:value={login} placeholder="email">
           <input type="password" bind:value={password} class="form__input" placeholder="password">
           <p class="form__forgot">Забыли пароль?</p>
-          <input type="submit" class="form__btn" value="Войти">
+          <div style="display: flex; justify-content: center;">
+            <input type="submit" class="form__btn" value="Войти">
+          </div>
+          
           {#if isError}
             <p>{res}</p>
           {/if}
@@ -122,7 +116,7 @@ function logout(){
 
 </div>
 
-<style>
+<style scoped>
   .wrapper{
     display: flex;
     flex-direction: column;
@@ -138,7 +132,7 @@ function logout(){
   .header__wrapper{
     display: flex;
     flex-direction: row;
-    padding: 2% 0;
+    padding: 1% 0;
     justify-content: space-between;
     max-width: 1533px;
     max-height: 4320px;
@@ -179,6 +173,21 @@ text-transform: uppercase;
     display: flex;
     flex-direction: row;
   }
+  .buttons__exit{
+    display: inline-flex;
+padding: 10px var(--16, 16px);
+justify-content: center;
+align-items: center;
+border-radius: 4px;
+border-color: #FCECEA;
+background:#FCECEA;
+color: #EE5E52;
+
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 16px; /* 114.286% */
+  }
   .buttons__btn{
     
   }
@@ -187,13 +196,14 @@ text-transform: uppercase;
     display: flex;
     flex-direction: column;
     margin: 0px auto;
+    max-width: 590px;
     border-radius: 35px;
     border: 1px solid #DCDCE4;
     background: #FFF;
     font-family: 'SF';
   }
   .auth__wrapper{
-    padding: 20% 20%;
+    padding: 70px 90px;
   }
   .auth__title{
     color: var(--light-mode-primary-700, #271FE0);
@@ -217,6 +227,7 @@ text-transform: uppercase;
     border-radius: 5px;
     border: 1px solid #DCDCE4;
     background: #FFF;
+    margin: 10px 0px;
   }
   .form__forgot{
     display: inline-flex;
@@ -230,9 +241,15 @@ text-transform: uppercase;
     font-style: normal;
     font-weight: 400;
     line-height: 20px; /* 166.667% */
+    cursor: pointer;
+    transition: 0.5s ease all;
+  }
+  .form__forgot:hover{
+    transition: 0.5s ease all;
+    color: #4945FF;
   }
   .form__btn{
-    display: inline-flex;
+    display: flex;
     padding: 15px 100px;
     justify-content: center;
     align-items: center;
@@ -240,6 +257,16 @@ text-transform: uppercase;
     border: 1px solid #4945FF;
     background: #4945FF;
     color: #fff;
+    max-width: 245px;
+    transition: 0.5 ease all;
+  }
+  .form__btn:hover{
+    transition: 0.5 ease all;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid #7B79FF;
+    background: #7B79FF;
+    box-shadow: 0px 1px 2px 0px rgba(198, 228, 246, 0.05);
   }
   .main{
 

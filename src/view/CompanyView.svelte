@@ -33,18 +33,51 @@ let name = 'Инфа'
         <div class="body__info">
           <div class="info__text">Информация</div>
           <div class="info__input">
-            <Input {name} /> 
-            <Input {name} />
-            <Input {name} />
-            <Input {name} />
+            <div class="input__row">
+              <div class="row__block">
+                <p class="block__text">Название компании</p>
+                <Input {name}/>
+              </div>
+            </div>
+            <div class="input__row">
+              <div class="row__block">
+                <p class="block__text">Цель</p>
+                <Input {name}  />
+              </div>
+              <div class="row__block">
+                <p class="block__text">Миссия</p>
+                <Input {name} />
+              </div>
+            </div>
+            <div class="input__row">
+              <div class="row__block">
+                <p class="block__text">Фактический адрес</p>
+                <Input {name} />
+              </div>
+              <div class="row__block">
+                <p class="block__text">ИНН</p>
+                <Input {name} />
+              </div>
+            </div>
           </div>
         </div>
         <div class="body__contact">
           <div class="info__text">Контакты</div>
           <div class="info__input">
-            <Input {name} /> 
-            <Input {name} />
-            <Input {name} />
+            <div class="input__row">
+              <div class="row__block">
+                <p class="block__text">Телефон</p>
+                <Input {name} />
+              </div>
+              <div class="row__block">
+                <p class="block__text">E-mail</p>
+                <Input {name} />
+              </div>
+              <div class="row__block">
+                <p class="block__text">Представитель</p>
+                <Input {name} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -55,9 +88,11 @@ let name = 'Инфа'
 <style>
   .company{
     margin: 0% 15%;
+    min-height: 850px;
+    font-family: 'SF';
   }
   .company__wrapper{
-    margin-top: 100px;
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
   }
@@ -122,7 +157,7 @@ background: var(--light-mode-primary-100, #F0F0FF);
     box-shadow: 0px 1px 4px 0px rgba(33, 33, 52, 0.10);
   }
   .body__wrapper{
-
+    padding: 2% 3%;
   }
   .body__info{
 
@@ -130,7 +165,7 @@ background: var(--light-mode-primary-100, #F0F0FF);
   .info__text{
     color: #212134;
     font-feature-settings: 'clig' off, 'liga' off;
-    padding: 2% 2%;
+    padding-bottom: 2%;
 
     /* Delta - H3 */
     font-family: 'SF';
@@ -142,8 +177,26 @@ background: var(--light-mode-primary-100, #F0F0FF);
   }
   .info__input{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
+  }
+  .input__row{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+  }
+  .row__block{
+    margin-right: 25px;
+  }
+  .block__text{
+    color: var(--light-mode-neutral-800, #32324D);
+font-feature-settings: 'clig' off, 'liga' off;
+
+/* Pi (Bold) - Small button text */
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: 16px; /* 133.333% */
   }
 
 </style>

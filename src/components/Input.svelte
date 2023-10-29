@@ -2,7 +2,11 @@
  export let name = 'Неизвестно'
 </script>
 
-<input class="input" type="text" value="{name}">
+{#if localStorage.role === 'Organization'}
+  <input class="input" type="text" value="{name}">
+{:else}
+  <input disabled class="input" type="text" value="{name}">
+{/if}
 
 <style>
   .input{
@@ -14,5 +18,14 @@
     border-radius: 4px;
     border: 1px solid var(--light-mode-neutral-200, #DCDCE4);
     background: var(--light-mode-neutral-0, #FFF);
+    color: var(--light-mode-neutral-800, #32324D);
+font-feature-settings: 'clig' off, 'liga' off;
+
+/* Omega (Regular) - Body */
+font-family: 'SF';
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 142.857% */
   }
 </style>

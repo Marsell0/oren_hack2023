@@ -11,6 +11,7 @@ import EducationView from "../view/EducationView.svelte";
 import BaseTests from "../view/BaseTests.svelte";
 import EmployeeView from "../view/EmployeeView.svelte";
 import AnalView from "../view/AnalView.svelte";
+import EducationBaseView from "../view/EducationBaseView.svelte";
 
 let view = 'company'
 
@@ -200,6 +201,8 @@ function changeChecked(id){
     <div class="profile__content">
       {#if view === 'company'}
         <CompanyView></CompanyView>
+      {:else if view === 'education'}
+        <EducationView {view}></EducationView>
       {:else if view === 'tests'}
         <TestsView></TestsView>
       {:else if view === 'results'}
@@ -208,8 +211,8 @@ function changeChecked(id){
         <SupportView></SupportView>
       {:else if view === 'application'}
         <ApplicationView></ApplicationView>
-      {:else if view === 'education'}
-        <EducationView></EducationView>
+      {:else if view === 'education_base'}
+        <EducationBaseView {view}></EducationBaseView>
       {:else if view === 'tests_base'}
         <BaseTests></BaseTests>
       {:else if view === 'employee'}
@@ -252,6 +255,15 @@ function changeChecked(id){
     margin: 10px 10px;
     padding: 10px 10px;
     align-items: center;
+    border: 1px solid #fff;
+    transition: 0.3s ease all;
+  }
+  .menu__list:hover{
+    cursor: pointer;
+    background-color: #F6F6F9;
+    transition: 0.3s ease all;
+    border-radius: 5px;
+    border: 1px solid #e7e7f1;
   }
   ._checked{
     border-radius: 5px;

@@ -18,7 +18,7 @@
 <style scoped>
   .button{
     display: inline-flex;
-    padding: 0.5% 5%;
+    padding: 10px 50px;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
@@ -32,6 +32,7 @@
     border-radius: 10px;
     border: 1px solid #F0F0FF;
     background: #F0F0FF;
+    cursor: pointer;
   }
   .button__text{
     color: blue

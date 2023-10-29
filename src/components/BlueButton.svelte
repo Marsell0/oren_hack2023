@@ -33,6 +33,7 @@
     border: 1px solid #7B79FF;
     background: #7B79FF;
     box-shadow: 0px 1px 2px 0px rgba(198, 228, 246, 0.05);
+    cursor: pointer;
   }
   .button__text{
     color: blue
