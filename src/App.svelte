@@ -30,6 +30,7 @@ async function postReg(){
       'Content-Type': 'application/json'
     }
   })
+
 }
 
 let token, isError
@@ -50,6 +51,7 @@ async function postAuth(){
   }).catch(() => {
     isError = true
   })
+  localStorage.portal_id = "5e97818d-fbca-44b5-8f8a-02fcd3f58a8b"
   console.log(res);
   res = res['data']
   token = res['tokenPair']

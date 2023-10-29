@@ -10,6 +10,7 @@
   let subtitle = 'Описание курса'
   let type = ''
 
+  let modules
   let url = 'http://xn--e1agmfegjgclf.xn----7sbpbfclakh1al9a7fxc.xn--p1ai:8000'
   let res
   async function getModules(){
@@ -19,7 +20,9 @@
       }
     })
     console.log(localStorage.getItem('token').split(' ')[1]);
-    console.log(res)
+    
+    modules = res['data']
+    console.log(modules)
   }
 
   onMount(() => {

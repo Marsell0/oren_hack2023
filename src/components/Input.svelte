@@ -2,11 +2,7 @@
  export let name = 'Неизвестно'
 </script>
 
-{#if localStorage.role === 'Organization'}
-  <input class="input" type="text" value="{name}">
-{:else}
-  <input disabled class="input" type="text" value="{name}">
-{/if}
+
 
 <style>
   .input{

@@ -10,7 +10,7 @@
     console.log(localStorage.getItem('id'));  
     tok = token[1]
     params =       {
-        'portal_id': localStorage.getItem('id'),
+        'portal_id': localStorage.getItem('portal_id'),
         'name': name,
         'url_file': null
       }
